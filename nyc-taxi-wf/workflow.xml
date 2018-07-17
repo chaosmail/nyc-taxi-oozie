@@ -1,0 +1,40 @@
+<workflow-app xmlns="uri:oozie:workflow:0.5" name="nyc-taxi-${taxiSlug}-wf">
+  
+  <global>
+    <job-tracker>${jobTracker}</job-tracker>
+    <name-node>${nameNode}</name-node>
+    <configuration>
+      <property>
+        <name>mapred.job.queue.name</name>
+        <value>${queueName}</value>
+      </property>
+      <property>
+       <name>oozie.launcher.mapred.job.queue.name</name>
+       <value>${queueName}</value>
+      </property>
+    </configuration>
+  </global>
+
+  <start to="fetch-dataset"/>
+
+  <action name="fetch-dataset" retry-max="${actionRetryMax}" retry-interval="${actionRetryInterval}">4
+    <shell xmlns="uri:oozie:shell-action:0.3">
+      <prepare>
+        <mkdir>${datasetDstUrl}</mkdir>
+      </prepare>
+      <exec>fetch.sh</exec>
+      <argument>${datasetSrcUrl}</argument>
+      <argument>${datasetDstUrl}</argument>
+      <capture-output/>
+    </shell>
+    <ok to="end"/>
+    <error to="fail"/>
+  </action>
+
+  <kill name="fail">
+    <message>Shell action failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+  </kill>
+
+  <end name="end"/>
+
+</workflow-app>

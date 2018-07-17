@@ -1,0 +1,23 @@
+<coordinator-app name="nyc-taxi-coord" frequency="${coord:months(1)}" start="${coordStart}" end="${coordEnd}" timezone="GMT" xmlns="uri:oozie:coordinator:0.4">
+  <controls>
+    <timeout>${coordTimeout}</timeout>
+    <concurrency>${coordConcurrency}</concurrency>
+    <execution>${coordExecution}</execution>
+    <throttle>${coordThrottle}</throttle>
+  </controls>
+  <action>
+    <workflow>
+      <app-path>${wfPath}</app-path>
+        <configuration>
+            <property>
+              <name>currMonth</name>
+              <value>${coord:formatTime(coord:nominalTime(), 'MM')}</value>
+            </property>
+            <property>
+              <name>currYear</name>
+              <value>${coord:formatTime(coord:nominalTime(), 'yyyy')}</value>
+            </property>
+        </configuration>
+   </workflow>
+  </action>
+</coordinator-app>
