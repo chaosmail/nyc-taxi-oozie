@@ -8,12 +8,24 @@ Download the NYC Taxi dataset to HDFS using Oozie.
 hdfs dfs -mkdir -p /user/oozie/nyc-taxi-wf
 ```
 
-## Test Coordinator
+## Test Coordinator on HDP Sandbox
 
 ```sh
-hdfs dfs -put -f nyc-taxi-wf /user/oozie
+export OOZIE_URL=http://sandbox.hortonworks.com:11000/oozie
 
-oozie job -oozie http://<oozie-server>:11000/oozie -config nyc-taxi-wf/job.properties -run
+hdfs dfs -put -f nyc-taxi-wf /user/oozie
+oozie job -config nyc-taxi-wf/job.properties -run
+```
+
+## Test Coordinator on HDInsight
+
+```sh
+export OOZIE_URL=http://headnodehost:11000/oozie
+export JOB_TRACKER=headnodehost:8050
+export NAME_NODE=adl://home
+
+hdfs dfs -put -f nyc-taxi-wf /user/oozie
+oozie job -config nyc-taxi-wf/job.properties -D jobTracker=$JOB_TRACKER -D nameNode=$NAME_NODE -run
 ```
 
 ### Run all
