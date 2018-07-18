@@ -1,3 +1,4 @@
+#!/bin/sh
 set -xeo pipefail
 
 IN=$1
