@@ -17,7 +17,7 @@
 
   <start to="fetch-dataset"/>
 
-  <action name="fetch-dataset" retry-max="${actionRetryMax}" retry-interval="${actionRetryInterval}">4
+  <action name="fetch-dataset" retry-max="${actionRetryMax}" retry-interval="${actionRetryInterval}">
     <shell xmlns="uri:oozie:shell-action:0.3">
       <prepare>
         <mkdir path="${datasetDstUrl}"/>
