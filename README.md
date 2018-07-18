@@ -35,7 +35,11 @@ oozie job -config nyc-taxi-wf/job.properties -D jobTracker=$JOB_TRACKER -D nameN
 ```sh
 hdfs dfs -put -f nyc-taxi-wf /user/oozie
 
+# start all coordinators
 make
+
+# see all running coordinators
+oozie jobs -jobtype coordinator -filter status=RUNNING
 ```
 
 ## License
