@@ -18,4 +18,4 @@ gzip $DIR/*
 hdfs dfs -put -f $DIR/* $OUT
 
 # delete temp directory
-rm $DIR
+rm -rf $DIR
