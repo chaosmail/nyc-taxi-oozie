@@ -1,3 +1,5 @@
+set -xeo pipefail
+
 $IN=$1
 $OUT=$2
 $DIR=output
