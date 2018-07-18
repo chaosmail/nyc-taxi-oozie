@@ -1,4 +1,4 @@
-<workflow-app xmlns="uri:oozie:workflow:0.5" name="nyc-taxi-${taxiSlug}-wf">
+<workflow-app xmlns="uri:oozie:workflow:0.5" name="nyc-taxi-${taxiSlug}-${currYear}-${currMonth}-wf">
   
   <global>
     <job-tracker>${jobTracker}</job-tracker>
