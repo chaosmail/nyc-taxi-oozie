@@ -8,6 +8,8 @@ Download the NYC Taxi dataset to HDFS using Oozie.
 hdfs dfs -mkdir -p /user/oozie/nyc-taxi-wf
 ```
 
+Configure the properties of the job using the [job.properties](nyc-taxi-wf/job.properties) file.
+
 ## Test Coordinator on HDP Sandbox
 
 ```sh
