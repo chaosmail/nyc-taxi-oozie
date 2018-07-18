@@ -3,7 +3,7 @@ set -euxo pipefail
 
 IN=$1
 OUT=$2
-DIR=output
+DIR=$(pwd)/.wget
 
 # create temp directory
 mkdir -p $DIR
@@ -11,8 +11,11 @@ mkdir -p $DIR
 # download data
 wget $IN --directory-prefix=$DIR
 
+# compress data
+gzip $DIR/*
+
 # move data to HDFS
-hdfs dfs -put -f "$DIR/*" $OUT
+hdfs dfs -put -f $DIR/* $OUT
 
 # delete temp directory
 rm $DIR
