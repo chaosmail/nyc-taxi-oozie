@@ -11,7 +11,7 @@ hdfs dfs -mkdir -p /user/oozie/nyc-taxi-wf
 ## Test Coordinator
 
 ```sh
-hdfs dfs -put nyc-taxi-wf /user/oozie
+hdfs dfs -put -f nyc-taxi-wf /user/oozie
 
 oozie job -oozie http://<oozie-server>:11000/oozie -config nyc-taxi-wf/job.properties -run
 ```
@@ -19,7 +19,7 @@ oozie job -oozie http://<oozie-server>:11000/oozie -config nyc-taxi-wf/job.prope
 ### Run all
 
 ```sh
-hdfs dfs -put nyc-taxi-wf /user/oozie
+hdfs dfs -put -f nyc-taxi-wf /user/oozie
 
 make
 ```
