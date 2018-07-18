@@ -1,8 +1,8 @@
 set -xeo pipefail
 
-$IN=$1
-$OUT=$2
-$DIR=output
+IN=$1
+OUT=$2
+DIR=output
 
 # create temp directory
 mkdir -p $DIR
