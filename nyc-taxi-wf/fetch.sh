@@ -8,10 +8,10 @@ DIR=output
 mkdir -p $DIR
 
 # download data
-wget $1 --directory-prefix=$DIR
+wget $IN --directory-prefix=$DIR
 
 # move data to HDFS
-hdfs dfs -put -f $DIR/* $2
+hdfs dfs -put -f $DIR/* $OUT
 
 # delete temp directory
 rm $DIR
