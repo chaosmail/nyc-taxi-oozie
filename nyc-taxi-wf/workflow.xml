@@ -25,7 +25,7 @@
       <exec>fetch.sh</exec>
       <argument>${datasetSrcUrl}</argument>
       <argument>${datasetDstUrl}</argument>
-      <capture-output/>
+      <file>fetch.sh</file>
     </shell>
     <ok to="end"/>
     <error to="fail"/>
