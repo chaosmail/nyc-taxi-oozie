@@ -19,7 +19,7 @@ hdfs dfs -put -f nyc-taxi-wf /user/oozie
 oozie job -config nyc-taxi-wf/job.properties -run
 ```
 
-## Test Coordinator on HDInsight
+## Test Coordinator on HDInsight (using Data Lake Storage v1)
 
 ```sh
 export OOZIE_URL=http://headnodehost:11000/oozie
